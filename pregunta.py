@@ -15,7 +15,8 @@ def clean_data():
     df = pd.read_csv("solicitudes_credito.csv", sep=";")
     df.monto_del_credito = df.monto_del_credito.str.strip("$")
     df.monto_del_credito = df.monto_del_credito.str.replace(",","")
-    df.monto_del_credito = df.monto_del_credito.astype(float)
+    df.monto_del_credito = df.monto_del_credito.str.replace("\.00","")
+    df.monto_del_credito = df.monto_del_credito.astype(int)
 
     return df
 
