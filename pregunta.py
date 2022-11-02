@@ -12,7 +12,7 @@ import pandas as pd
 
 def clean_data():
 
-    df = pd.read_csv("solicitudes_credito.csv", sep=";")
+    df = pd.read_csv("solicitudes_credito.csv", sep=";", index_col = 0)
 
     #Elimina las filas con datos perdidos
     df.dropna(axis=0, inplace=True)
@@ -41,8 +41,6 @@ def clean_data():
     return df
 
 if __name__ == "__main__":
-    #print(list(filter(lambda data: ((data != "masculino") and (data != "femenino")), clean_data().sexo.str)))
-    print(clean_data())
-    #for data in clean_data().monto_del_credito:
-        #if ((re.match(r"\D", data))):
-            #print(data)
+    print(clean_data().dtypes)
+    print(clean_data().sexo.value_counts())
+    
