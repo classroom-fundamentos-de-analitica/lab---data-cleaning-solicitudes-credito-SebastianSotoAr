@@ -14,8 +14,8 @@ def clean_data():
 
     df = pd.read_csv("solicitudes_credito.csv", sep=";")
 
+    #Elimina las filas con datos perdidos
     df.dropna(axis=0, inplace=True)
-    df.drop_duplicates(inplace=True)
 
     #Limpia la fila monto_del_credito y la convierte en int
     df.monto_del_credito = df.monto_del_credito.str.strip("$")
@@ -31,6 +31,9 @@ def clean_data():
         df[filas] = df[filas].str.lower()
         df[filas] = df[filas].str.replace('_', ' ')
         df[filas] = df[filas].str.replace('-', ' ')
+
+    #Elimina los duplicados
+    df.drop_duplicates(inplace=True)
 
     return df
 
