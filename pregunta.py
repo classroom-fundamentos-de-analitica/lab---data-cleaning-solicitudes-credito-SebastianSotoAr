@@ -17,9 +17,6 @@ def clean_data():
     #Elimina las filas con datos perdidos
     df.dropna(axis=0, inplace=True)
 
-    #Elimina los duplicados
-    df.drop_duplicates(inplace=True)
-
     #Limpia la fila monto_del_credito y la convierte en int
     df.monto_del_credito = df.monto_del_credito.str.strip("$")
     df.monto_del_credito = df.monto_del_credito.str.replace(",","")
