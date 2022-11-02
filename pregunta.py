@@ -20,9 +20,19 @@ def clean_data():
     df.monto_del_credito = df.monto_del_credito.astype(int)
 
     #Comvierte la fila fecha_de_beneficio
-    df.fecha_de_beneficio = pd.to_datetime(df.fecha_de_beneficio)
+    df.fecha_de_beneficio = pd.to_datetime(df.fecha_de_beneficio, dayfirst=True)
+
+    #Limpia las filas sexo, tipo_de_emprendimiento, idea_negocio, línea_credito y barrio
+    for filas in ['sexo', 'tipo_de_emprendimiento', 'idea_negocio', 'línea_credito', 'barrio']:
+        df[filas] = df[filas].str.lower()
 
     return df
 
 if __name__ == "__main__":
-    print(clean_data().fecha_de_beneficio)
+    #print(list(filter(lambda data: ((data != "masculino") and (data != "femenino")), clean_data().sexo.str)))
+    print(clean_data().columns)
+    print(clean_data().dtypes)
+    print(clean_data().head())
+    #for data in clean_data().monto_del_credito:
+        #if ((re.match(r"\D", data))):
+            #print(data)
