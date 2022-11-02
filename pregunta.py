@@ -12,6 +12,7 @@ import pandas as pd
 
 def clean_data():
 
+    #index_col = 0 obliga a usar la primera columna como indice
     df = pd.read_csv("solicitudes_credito.csv", sep=";", index_col = 0)
 
     #Elimina las filas con datos perdidos
@@ -38,6 +39,6 @@ def clean_data():
     return df
 
 if __name__ == "__main__":
-    print(clean_data().dtypes)
-    print(clean_data().sexo.value_counts())
-    
+    df = clean_data()
+    print(df.dtypes)
+    print(df.sexo.value_counts())
